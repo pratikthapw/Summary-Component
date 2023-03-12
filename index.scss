@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans;
+  font-size: 18px;
+}
+
+// Defining SCSS Variables
+$borderRadius: 1.2rem;
+$gap: 2.2rem;
+$circleSize: 8rem;
+
+// Using SCSS mixin's
+@mixin displayFlex {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.result {
+  @include displayFlex;
+  background: hsl(241, 81%, 54%);
+  color: hsl(241, 100%, 89%);
+  border-radius: 0px 0px $borderRadius $borderRadius;
+  min-height: 60vh;
+  gap: $gap;
+  padding: $gap;
+
+  &__points {
+    @include displayFlex;
+    height: $circleSize;
+    width: $circleSize;
+    background: hsla(241, 72%, 46%, 1);
+    border-radius: 50%;
+    padding: 1.5rem;
+    gap: 0.3rem;
+
+    &--point {
+      color: hsl(0%, 0%, 100%);
+      font-size: 3.4rem;
+    }
+  }
+
+  &__description {
+    @include displayFlex;
+    gap: 0.4rem;
+
+    &--compliment {
+      color: hsl(0%, 0%, 100%);
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.summary {
+  @include displayFlex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+
+  &__card {
+    @include displayFlex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0.8rem 0.6rem;
+    border-radius: 0.5rem;
+    background: hsla(0, 100%, 67%, 0.2);
+    width: 100%;
+    color: hsla(0, 100%, 67%, 1);
+    font-weight: bold;
+
+    &--point {
+      color: gray;
+      span {
+        color: black;
+      }
+    }
+  }
+
+  &__continue {
+    padding: 1rem 0.6rem;
+    width: 100%;
+    background: hsl(224, 30%, 27%);
+    color: hsl(0%, 0%, 100%);
+    font-weight: bold;
+    text-align: center;
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+
+  &__continue:hover {
+    background: hsl(241, 81%, 54%);
+  }
+}
+
+//For bigger Screens
+@media only screen and (min-width: 700px) {
+  .center {
+    @include displayFlex;
+    flex-flow: row nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 90vh;
+  }
+
+  .result {
+    width: 50%;
+    height: 80%;
+    border-radius: $borderRadius;
+    padding: 0.8rem;
+  }
+
+  .summary {
+    width: 50%;
+    gap: 1rem;
+  }
+}
